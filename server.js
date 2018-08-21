@@ -1,11 +1,26 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const bodyParser = require('body-parser');
+const passport = require('passport');
 
+//routers
 const users = require('./routes/api/users');
 const profile = require('./routes/api/profile');
 const posts = require('./routes/api/posts');
 
 var app = express();
+
+//body parser middleware
+app.use(bodyParser.urlencoded({extended:false}));
+app.use(bodyParser.json());
+
+//passport middleware
+
+app.use(passport.initialize());
+
+//passport config
+
+require('./config/passport')(passport);
 
 // DB config
 var db = require('./config/keys').mongoURI;
@@ -24,10 +39,6 @@ app.use('/api/users',users);
 app.use('/api/posts',posts);
 app.use('/api/profile',profile);
 
-
-app.get('/',(req,res)=>{
-    res.send('hello world');
-})
 
 const port = process.env.PORT || 5000;
 
