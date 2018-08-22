@@ -139,7 +139,7 @@ router.post('/login',(req,res)=>{
 
 // @route   GET api/users/current
 // @desc    return current user
-// @access  Public
+// @access  private
 
 router.get(
     '/current',
