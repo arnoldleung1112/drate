@@ -91,15 +91,15 @@ router.post('/login',(req,res)=>{
     //login
     const email = req.body.email;
     const password = req.body.password;
-    console.log('email:' + req.body.email);
+    
     //Find user by email
 
     User.findOne({email : email})
         .then((user)=>{
-            console.log(user);
+            
             if (!user){
-                errors.user = 'user not found';
-                return res.status(404).json({errors});
+                errors.email = 'user not found';
+                return res.status(404).json(errors);
             }else{
 
                 //check user
@@ -129,7 +129,7 @@ router.post('/login',(req,res)=>{
                        
                     }else{
                         errors.password = 'password incorrect'
-                        return res.status(400).json({errors});
+                        return res.status(400).json(errors);
                     }
                 });
 

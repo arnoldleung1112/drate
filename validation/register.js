@@ -33,7 +33,7 @@ module.exports = function validateRegisterInput(data){
     data.password = !isEmpty(data.password) ? data.password : '';
 
     if(Validator.isEmpty(data.password)){
-        errors.name = 'password field is required';
+        errors.password = 'password field is required';
     };
 
     //check password2 empty
