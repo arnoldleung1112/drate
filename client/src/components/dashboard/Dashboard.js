@@ -33,6 +33,15 @@ class Dashboard extends Component {
                 <p className="lead text-muted">
                   Welcome  <Link to= {`/profile/${profile.handle}`}>{user.name}</Link>
                 </p>
+
+                <div className="card mb-3">
+                  <div className="card-body">
+                    <h2>Account</h2>
+                    <p> BALANCE: {user.balance} DRT </p>
+                  </div>
+                </div>
+                
+                <h2> Porfile </h2>
                 <ProfileActions />
                 <Experience experience={profile.experience} />
                 <Education education={profile.education} />

@@ -8,6 +8,9 @@ const path = require('path');
 const users = require('./routes/api/users');
 const profile = require('./routes/api/profile');
 const posts = require('./routes/api/posts');
+const project=require('./routes/api/projects');
+const util = require('./routes/api/util');
+
 
 var app = express();
 
@@ -39,6 +42,9 @@ mongoose.connect(db)
 app.use('/api/users',users);
 app.use('/api/posts',posts);
 app.use('/api/profile',profile);
+app.use('/api/projects', project);
+app.use('/api/util',util);
+
 
 if(process.env.NODE_ENV === 'production'){
     app.use(express.static('client/build'));

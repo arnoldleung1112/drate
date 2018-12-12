@@ -45,10 +45,23 @@ export const loginUser = userData => dispatch => {
 
 
 // set logged in user
-export const setCurrentUser = decoded => {
-    return {
-        type: SET_CURRENT_USER,
-        payload: decoded
+export const setCurrentUser = decoded => dispatch => {
+    console.log(decoded);
+    if (decoded.balance){
+        axios.get('/api/users/current')
+        .then(res=>{
+            decoded.balance = res.data.balance;
+            dispatch({
+                type: SET_CURRENT_USER,
+                payload: decoded
+            })
+    }).catch(err => console.log(err))
+        
+    }else{
+        dispatch({
+            type: SET_CURRENT_USER,
+            payload: decoded
+        })
     }
 }
 

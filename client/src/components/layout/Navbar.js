@@ -22,8 +22,13 @@ class Navbar extends Component {
     const authLinks = (
       <ul className="navbar-nav ml-auto">
         <li className="nav-item">
-          <Link className="nav-link" to="/feed">
-            Post Feed
+          <Link className="nav-link" to="/dashboard">
+          DRT BALANCE: {user.balance}
+          </Link>
+        </li>
+        <li className="nav-item">
+          <Link className="nav-link" to="/create-project">
+            Submit Project
           </Link>
         </li>
         <li className="nav-item">
@@ -72,6 +77,10 @@ class Navbar extends Component {
         <ul className="navbar-nav mr-auto">
           <li className="nav-item">
             <Link className="nav-link" to="/profiles"> Members
+            </Link>
+          </li>
+          <li className="nav-item">
+            <Link className="nav-link" to="/projects"> Projects
             </Link>
           </li>
         </ul>

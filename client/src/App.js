@@ -23,7 +23,13 @@ import Profile from './components/profile/Profile'
 import NotFound from './components/not-found/NotFound'
 import Posts from './components/posts/Posts'
 import Post from './components/post/Post'
-
+import Projects from './components/projects/Projects'
+import AddProject from './components/create-project/CreateProject'
+import Project from './components/project/Project'
+import AddReview from './components/create-review/CreateReview'
+import Review from './components/review/Review'
+import Imageloader from './components/imgUploader/imageUploader'
+import ReviewResult from './components/reviewResult/ReviewResult'
 //set auth header imports
 import setAuthToken from './utils/setAuthToken'
 import jwt_decode from 'jwt-decode'
@@ -75,6 +81,11 @@ class App extends Component {
               <Route exact path="/login" component={Login} />
               <Route exact path="/profiles" component={Profiles} />
               <Route exact path="/profile/:handle" component={Profile} />
+              <Route exact path="/projects" component={Projects}/>
+              <Route exact path="/projects/:projectId" component={Project} />
+              <Route exact path="/projects/reviews/:projectId/:reviewId" component={Review} />
+              <Route exact path="/imageuploader" component={Imageloader} />
+              <Route exact path="/reviewresult/:projectId" component={ReviewResult} />
               <Switch>
                 <PrivateRoute exact path="/dashboard" component={Dashboard} />
               </Switch>
@@ -116,6 +127,18 @@ class App extends Component {
                 <PrivateRoute
                   exact path ="/post/:id"
                   component={Post}
+                />
+              </Switch>
+              <Switch>
+                <PrivateRoute
+                  exact path ="/create-Project"
+                  component={AddProject}
+                />
+              </Switch>
+              <Switch>
+                <PrivateRoute
+                  exact path ="/create-review/:projectid"
+                  component={AddReview}
                 />
               </Switch>
               
